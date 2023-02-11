@@ -79,6 +79,34 @@ RUN apt-get update && \
         ros-noetic-moveit-resources-prbt-moveit-config \
         ros-noetic-pilz-industrial-motion-planner 
 
+RUN apt update &&\
+    apt install -y ffmpeg &&\
+    apt install -y software-properties-common 
+
+# RUN add-apt-repository -y ppa:jonathonf/ffmpeg-4 
+
+
+# RUN pip3 install -y 'numpy>=1.20.3' 
+RUN pip3 install 'numpy==1.23.5'
+RUN pip3 install  datasets>=2.6.1  
+
+RUN pip3 install  git+https://github.com/huggingface/transformers 
+
+# RUN pip3 install -y 'numpy<1.24'
+
+RUN pip3 install  librosa &&\
+    pip3 install  evaluate>=0.30 &&\
+    pip3 install  jiwer &&\
+    pip3 install gradio &&\
+    pip3 install torch==1.11.0+cu115 torchvision==0.12.0+cu115 torchaudio==0.11.0+cu115 -f https://download.pytorch.org/whl/cu115/torch_stable.html &&\
+    pip3 install tensorboard 
+
+RUN wget --content-disposition https://packagecloud.io/github/git-lfs/packages/ubuntu/bionic/git-lfs_2.13.3_i386.deb/download.deb &&\
+    apt-get install git-lfs 
+
+RUN pip3 install --upgrade huggingface_hub 
+    # huggingface-cli login 
+
 
 # RUN source /root/.bashrc && \
 #     pip install matplotlib && \
